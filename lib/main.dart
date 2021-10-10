@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterr/TechTerm.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -13,7 +14,11 @@ class MyProfile extends StatefulWidget {
 }
 
 class _MyProfileState extends State<MyProfile> {
-  List<String> lists = ["Android development", "iOS development", "Flutter Code"];
+  List<TechTerm> lists = [
+    TechTerm (stack: "php",  text: "laravel"),
+    TechTerm (stack: "java",  text: "javafx"),
+    TechTerm (stack: "javascript",  text: "react"),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,10 +29,10 @@ class _MyProfileState extends State<MyProfile> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: lists.map((str) {
+        children: lists.map((term) {
           return Center(
             child: Text(
-              str,
+              '${term.stack} => ${term.text}',
               style: TextStyle (
                 fontSize: 18,
                 color: Colors.amberAccent,
@@ -37,7 +42,6 @@ class _MyProfileState extends State<MyProfile> {
           );
         }).toList(),
       ),
-      backgroundColor: Colors.black87,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Text('click'),
