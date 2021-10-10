@@ -15,10 +15,39 @@ class MyProfile extends StatefulWidget {
 
 class _MyProfileState extends State<MyProfile> {
   List<TechTerm> lists = [
-    TechTerm (stack: "php",  text: "laravel"),
-    TechTerm (stack: "java",  text: "javafx"),
-    TechTerm (stack: "javascript",  text: "react"),
+    TechTerm (stack: "php",  text: "Laravel,CakePhp, Phalcon,Drupal"),
+    TechTerm (stack: "java",  text: "javafx, android, Hibernate, javaServer"),
+    TechTerm (stack: "javascript",  text: "react, angular, jquery, react native"),
   ];
+
+  Widget stackTemplate(TechTerm term){
+    return Card(
+      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              term.stack,
+              style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.green,
+              ),
+            ),
+            SizedBox(height: 8.0,),
+            Text(
+              term.text,
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.black87
+              ),
+            )
+        ],
+    ),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,16 +59,7 @@ class _MyProfileState extends State<MyProfile> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: lists.map((term) {
-          return Center(
-            child: Text(
-              '${term.stack} => ${term.text}',
-              style: TextStyle (
-                fontSize: 18,
-                color: Colors.amberAccent,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          );
+          return stackTemplate(term);
         }).toList(),
       ),
       floatingActionButton: FloatingActionButton(
