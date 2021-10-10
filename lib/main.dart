@@ -13,7 +13,7 @@ class MyProfile extends StatefulWidget {
 }
 
 class _MyProfileState extends State<MyProfile> {
-  int num = 0;
+  List<String> lists = ["Android development", "iOS development", "Flutter Code"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,73 +22,20 @@ class _MyProfileState extends State<MyProfile> {
         centerTitle: true,
         backgroundColor: Colors.red[600],
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(30.0, 40.0, 30.0,0.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage("assets/laptop.jpg"),
-                radius: 50.0,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: lists.map((str) {
+          return Center(
+            child: Text(
+              str,
+              style: TextStyle (
+                fontSize: 18,
+                color: Colors.amberAccent,
+                fontWeight: FontWeight.w400,
               ),
             ),
-            Divider(
-              thickness: 5.0,
-              height: 90.0,
-              color: Colors.grey[200],
-            ),
-            Text(
-              "Name",
-              style: TextStyle(
-                  color: Colors.grey,
-                  letterSpacing: 2.0,
-                  fontFamily: "Sofia"
-              ),
-            ),
-            SizedBox(height: 10.0,),
-            Text(
-              "Abolarinwa Quadri",
-              style: TextStyle(
-                color: Colors.yellowAccent,
-                fontSize: 22.0,
-                letterSpacing: 2.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 20.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Icon(
-                  Icons.mail_outline,
-                  size: 30.0,
-                  color: Colors.white12,
-                ),
-                SizedBox(width: 7.0,),
-                Text(
-                  'abolarinwaquadri@gmail.com',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 18.0,
-                    letterSpacing: 1.0,
-                  ),
-                )
-              ],
-            ),
-            SizedBox(height: 40.0),
-            Center(
-              child: Text(
-                "You clicked $num times",
-                style: TextStyle(
-                  color: Colors.redAccent,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
-          ],
-        ),
+          );
+        }).toList(),
       ),
       backgroundColor: Colors.black87,
       floatingActionButton: FloatingActionButton(
